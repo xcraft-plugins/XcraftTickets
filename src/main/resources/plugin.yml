@@ -1,0 +1,57 @@
+name: XcraftTickets
+version: "1.18.1"
+api-version: "1.18"
+authors: [Voronwe, INemesisI]
+description: Ticket management system
+
+main: de.xcraft.voronwe.XcraftTickets.XcraftTickets
+load: POSTWORLD
+depend: [Vault]
+
+commands:
+    ticket:
+        description: Access to tickets
+        aliases: t
+        usage: /<command> <args>
+    tl:
+        description: Access to the ticket list
+        usage: /<command> [all]
+
+permissions:
+    xcrafttickets.admin:
+        description: Access to all /ticket commands this plugin provides
+        children:
+            xcrafttickets.mod: true
+            xcrafttickets.save: true
+            xcrafttickets.reload: true
+            xcrafttickets.assignee: true
+        default: op
+        
+    xcrafttickets.mod:
+        description: Access to all mod related /ticket commands
+        children:
+            xcrafttickets.user: true
+            xcrafttickets.warp: true
+            xcrafttickets.assign: true
+            xcrafttickets.unassign: true
+            xcrafttickets.list.all: true
+            xcrafttickets.view.all: true
+            xcrafttickets.log.all: true
+            xcrafttickets.close.all: true
+            xcrafttickets.reopen.all: true
+            xcrafttickets.phrases: true
+            xcrafttickets.stats: true
+        default: false
+        
+    xcrafttickets.user:
+        description: Access  to all user related /ticket commands
+        children:
+            xcrafttickets.open: true
+            xcrafttickets.reopen: true
+            xcrafttickets.close: true
+            xcrafttickets.list: true
+            xcrafttickets.view: true
+            xcrafttickets.log: true
+            xcrafttickets.undo: true
+            xcrafttickets.setwarp: true
+        default: true
